@@ -1,0 +1,13 @@
+.login {
+    max-width: 35%;
+    margin: 0 auto;
+    margin-top: 15vh;
+}
+.login input,
+.login button {
+    margin-bottom: 10px;
+}
+
+.login button {
+    width: 100%;
+}

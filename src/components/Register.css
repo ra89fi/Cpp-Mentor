@@ -1,0 +1,13 @@
+.register {
+    max-width: 35%;
+    margin: 0 auto;
+    margin-top: 15vh;
+}
+.register input,
+.register button {
+    margin-bottom: 10px;
+}
+
+.register button {
+    width: 100%;
+}
