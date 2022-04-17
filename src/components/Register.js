@@ -1,35 +1,71 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Register.css';
 
+import app from '../firebase.init';
+import { getAuth } from 'firebase/auth';
+import {
+    useCreateUserWithEmailAndPassword,
+    useUpdateProfile,
+} from 'react-firebase-hooks/auth';
+
+const auth = getAuth(app);
+
 const Register = () => {
+    const [createUserWithEmailAndPassword, user, loading, error] =
+        useCreateUserWithEmailAndPassword(auth, {
+            sendEmailVerification: true,
+        });
+    const [updateProfile] = useUpdateProfile(auth);
+    const [name, setName] = useState('');
+    const formRef = useRef();
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        createUserWithEmailAndPassword(
+            e.target.email.value,
+            e.target.password.value
+        );
+    };
+
+    useEffect(() => {
+        if (user) formRef.current.reset();
+        if (name.length) updateProfile({ displayName: name });
+    }, [user]);
+
     return (
         <div className="register">
-            <input
-                type="text"
-                class="form-control"
-                id="name"
-                placeholder="Name"
-            />
-            <input
-                type="email"
-                class="form-control"
-                id="email"
-                placeholder="Email"
-            />
-            <input
-                type="password"
-                class="form-control"
-                id="password"
-                placeholder="Password"
-            />
-            <button type="button" class="btn btn-primary">
-                Register
-            </button>
+            <form onSubmit={handleSubmit} ref={formRef}>
+                <input
+                    type="text"
+                    className="form-control"
+                    id="name"
+                    placeholder="Name"
+                    onChange={(e) => setName(e.target.value.trim())}
+                />
+                <input
+                    type="email"
+                    className="form-control"
+                    id="email"
+                    placeholder="Email"
+                    required
+                />
+                <input
+                    type="password"
+                    className="form-control"
+                    id="password"
+                    placeholder="Password"
+                    required
+                />
+                <button type="submit" className="btn btn-primary">
+                    Register
+                </button>
+            </form>
             <p>
                 Already have an account? <Link to="/login">Login</Link>
             </p>
-            <p className="text-danger errTxt">This is sample error.</p>
+            {error && <p className="text-danger errTxt">{error.message}</p>}
+            {loading && <p>Loading...</p>}
         </div>
     );
 };
