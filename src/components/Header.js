@@ -25,15 +25,21 @@ const Header = () => {
                 <li>
                     <Link to="/blogs">Blogs</Link>
                 </li>
-                <li>
-                    <Link to="/register">Register</Link>
-                </li>
+                {!user && (
+                    <li>
+                        <Link to="/register">Register</Link>
+                    </li>
+                )}
                 <li>
                     {!user && <Link to="/login">Login</Link>}
-                    {user && <button onClick={logOut}>Log Out</button>}
+                    {user && (
+                        <button className="btn btn-primary" onClick={logOut}>
+                            Log Out
+                        </button>
+                    )}
                 </li>
+                <li>{user && <span>Hi! {user.displayName}</span>}</li>
             </ul>
-            {user && <span>Hi! {user.user.displayName}</span>}
         </header>
     );
 };
