@@ -7,6 +7,7 @@ const Home = () => {
     const checkout = (id) => {
         navigate(`/checkout/${id}`);
     };
+    const gotoAbout = () => navigate('/about');
     return (
         <div className="home">
             <div className="banner">
@@ -26,7 +27,10 @@ const Home = () => {
                         improves the lives of those around me.
                     </p>
                     <p>
-                        <button className="btn btn-primary">
+                        <button
+                            className="btn btn-primary"
+                            onClick={() => gotoAbout()}
+                        >
                             More About Me
                         </button>
                     </p>
