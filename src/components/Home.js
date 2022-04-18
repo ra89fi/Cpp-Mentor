@@ -1,7 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Home.css';
 
 const Home = () => {
+    const navigate = useNavigate();
+    const checkout = (id) => {
+        navigate(`/checkout/${id}`);
+    };
     return (
         <div className="home">
             <div className="banner">
@@ -47,7 +52,10 @@ const Home = () => {
                             </ul>
                         </div>
                         <div className="footer">
-                            <button className="btn btn-primary">
+                            <button
+                                className="btn btn-primary"
+                                onClick={() => checkout(1)}
+                            >
                                 $10/<small>mo</small>
                             </button>
                         </div>
@@ -69,7 +77,10 @@ const Home = () => {
                             </ul>
                         </div>
                         <div className="footer">
-                            <button className="btn btn-primary">
+                            <button
+                                className="btn btn-primary"
+                                onClick={() => checkout(2)}
+                            >
                                 $20/<small>mo</small>
                             </button>
                         </div>
@@ -91,7 +102,10 @@ const Home = () => {
                             </ul>
                         </div>
                         <div className="footer">
-                            <button className="btn btn-primary">
+                            <button
+                                className="btn btn-primary"
+                                onClick={() => checkout(3)}
+                            >
                                 $30/<small>mo</small>
                             </button>
                         </div>
