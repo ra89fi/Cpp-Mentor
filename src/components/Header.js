@@ -35,7 +35,9 @@ const Header = () => {
                         </button>
                     )}
                 </li>
-                <li>{user && <span>Hi! {user.displayName}</span>}</li>
+                <li>
+                    {user?.displayName && <span>Hi! {user.displayName}</span>}
+                </li>
             </ul>
         </header>
     );
