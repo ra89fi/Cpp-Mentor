@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Register.css';
 
 import app from '../firebase.init';
@@ -19,6 +19,7 @@ const Register = () => {
     const [updateProfile] = useUpdateProfile(auth);
     const [name, setName] = useState('');
     const formRef = useRef();
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -29,8 +30,11 @@ const Register = () => {
     };
 
     useEffect(() => {
-        if (user) formRef.current.reset();
         if (name.length) updateProfile({ displayName: name });
+        if (user) {
+            formRef.current.reset();
+            navigate('/');
+        }
     }, [user]);
 
     return (
