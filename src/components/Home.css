@@ -1,0 +1,78 @@
+.banner {
+    display: flex;
+    min-height: 70vh;
+    background-color: #030303;
+    margin-bottom: 8vh;
+}
+
+.banner > div {
+    width: 50%;
+    padding: 2em;
+}
+
+.banner .right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: lightgray;
+}
+
+.banner .right h2 {
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.banner .right h2:first-child {
+    color: #ffb400;
+}
+
+.banner .left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner .left img {
+    max-height: 70vh;
+}
+
+.services > h2 {
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.services .items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 2em;
+    grid-gap: 2em;
+}
+
+.services .items .item {
+    border-radius: 3px;
+    border: 1px solid lightgray;
+}
+
+.item .header {
+    padding: 0.6em 0 0;
+    text-align: center;
+}
+
+.item .header h4 {
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.item .body {
+    padding: 0.6em 0.6em 0;
+}
+
+.item .footer {
+    padding: 0.6em;
+    text-align: center;
+}
+
+footer {
+    padding: 0.6em;
+    text-align: center;
+}

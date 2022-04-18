@@ -1,6 +1,5 @@
 header {
     padding: 1.5rem 0;
-    background-color: #111;
 }
 
 header ul {
@@ -17,6 +16,6 @@ header ul li {
 
 header li a {
     text-decoration: none;
-    color: lightgray;
+    color: darkgray;
     text-transform: uppercase;
 }
